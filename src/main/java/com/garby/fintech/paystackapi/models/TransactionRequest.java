@@ -3,10 +3,11 @@ package com.garby.fintech.paystackapi.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.garby.fintech.paystackapi.models.MetaData;
-import model.PaystackBearer;
+import jakarta.xml.bind.ValidationException;
+import com.garby.fintech.paystackapi.models.PaystackBearer;
 
-import javax.validation.ValidationException;
-import javax.validation.constraints.Digits;
+//import javax.validation.ValidationException;
+//import javax.validation.constraints.Digits;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -18,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class TransactionRequest {
 
     // Amount in kobo
-    @Digits(integer = 9, fraction = 0)
+    // @Digits(integer = 9, fraction = 0)
     private Integer amount;
 
     // User email
@@ -146,7 +147,7 @@ public class TransactionRequest {
         return channel;
     }
 
-    public void setChannel(List<String> channel) {
+    public void setChannel(List<String> channel) throws ValidationException {
         if (!channel.contains("card") || !channel.contains("bank")) {
             throw new ValidationException("Invalid Channel, channel can only be 'bank' or `card`");
         }
