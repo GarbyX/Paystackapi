@@ -1,0 +1,83 @@
+##############################################
+#           Database Configuration           #
+##############################################
+spring:
+  mvc:
+    log-request-details: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: 
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    open-in-view: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        show-sql: true
+        format_sql: true
+        ddl-auto: update
+
+    # Hibernate ddl auto (create, create-drop, validate, update)
+
+  security:
+    user:
+      name: Admin
+      password: etz101
+#    headers:
+#          frame: origin
+
+  session:
+    store-type: none
+#     jdbc
+
+    jdbc:
+      initialize-schema: always
+#      schema:
+#        classpath: org/springframework/session/jdbc/payments.sql
+      timeout:
+      seconds: 600
+
+    output:
+    ansi:
+      enabled: DETECT
+
+
+##############################################
+#           Logging Configuration           #
+##############################################
+
+#  logging:
+#    config: classpath:logback-spring.xml
+#    file:
+#      name: tracka.log
+
+#  logging:
+#    file: logs/dev_app.log
+#    pattern:
+#      console: "%d %-5level %logger : %msg%n"
+#      file: "%d %-5level [%thread] %logger : %msg%n"
+
+#  logging:
+#    level:
+#      org.springframework.web: DEBUG
+#      com.capstone-api.controllers: DEBUG
+#      org.hibernate: DEBUG
+
+#  max-size:
+#  max-history:
+#  group:
+#    tomcat: org.apache.catalina, org.apache.coyote, org.apache.tomcat
+#    web: org.springframework.core.codec, org.springframework.http, org.springframework.web
+#    sql: org.springframework.jdbc.core, org.hibernate.SQL
+#  level:
+#    org:
+#      springframework:
+#        web:
+#          filter:
+#            CommonsRequestLoggingFilter: DEBUG
